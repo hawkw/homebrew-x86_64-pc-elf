@@ -1,5 +1,5 @@
 class X8664PcElfGcc < Formula
-  desc "The GNU Compiler Collection"
+  desc "The GNU Compiler Collection for cross-compiling to x86_64-pc-elf"
   homepage "https://gcc.gnu.org"
   url "https://ftpmirror.gnu.org/gcc/gcc-5.4.0/gcc-5.4.0.tar.bz2"
   mirror "https://ftp.gnu.org/gnu/gcc/gcc-5.4.0/gcc-5.4.0.tar.bz2"
