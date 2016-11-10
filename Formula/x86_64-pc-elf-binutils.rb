@@ -7,9 +7,9 @@ class X8664PcElfBinutils < Formula
   sha256 "cccf377168b41a52a76f46df18feb8f7285654b3c1bd69fc8265cb0fc6902f2d"
 
   # Build-only dependencies
-  depends_on "autoconf" :build
-  depends_on "automake" :build
-  
+  depends_on "autoconf" => :build
+  depends_on "automake" => :build
+
   def install
     mkdir "build" do
       system "../configure", "--target=x86_64-pc-elf",
