@@ -11,11 +11,12 @@ class X8664PcElfGcc < Formula
   depends_on "libmpc"
   depends_on "mpfr"
 
-  # Build-only dependencies
-  depends_on "autoconf" :build
-  depends_on "automake" :build
-
   depends_on "x86_64-pc-elf-binutils"
+
+  # Build-only dependencies
+  depends_on "autoconf" => :build
+  depends_on "automake" => :build
+
 
   def install
     # The C compiler is always built, C++ can be disabled
