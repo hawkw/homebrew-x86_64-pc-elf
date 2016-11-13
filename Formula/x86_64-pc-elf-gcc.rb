@@ -22,6 +22,9 @@ class X8664PcElfGcc < Formula
     # The C compiler is always built, C++ can be disabled
     languages = %w[c]
     languages << "c++" if build.with? "cxx"
+    binutils = Formula[x86_64-pc-elf-binutils]
+
+    ENV['PATH'] += ":#{binutils.prefix/"bin"}"
 
     mkdir "build" do
       system "../configure", "--target=x86_64-pc-elf",
