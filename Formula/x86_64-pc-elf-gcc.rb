@@ -24,7 +24,7 @@ class X8664PcElfGcc < Formula
     languages << "c++" if build.with? "cxx"
     binutils = Formula["x86_64-pc-elf-binutils"]
 
-    ENV['PATH'] += ":#{binutils.prefix/"bin"}"
+    # ENV['PATH'] += ":#{binutils.prefix/"bin"}"
 
     mkdir "build" do
       system "../configure", "--target=x86_64-pc-elf",
@@ -32,6 +32,10 @@ class X8664PcElfGcc < Formula
                              "--enable-languages=#{languages.join(",")}",
                              "--disable-nls",
                              "--without-headers",
+                             "--with-gnu-as",
+                             "--with-gnu-ld",
+                             "--with-ld=#{binutils.bin/"x86_64-pc-elf-ld"}",
+                             "--with-as=#{binutils.bin/"x86_64-pc-elf-as"}",
                              "--with-gmp=#{Formula["gmp"].opt_prefix}",
                              "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
                              "--with-mpc=#{Formula["libmpc"].opt_prefix}"
