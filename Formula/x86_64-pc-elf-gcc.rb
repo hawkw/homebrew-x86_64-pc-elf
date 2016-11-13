@@ -32,10 +32,13 @@ class X8664PcElfGcc < Formula
                              "--enable-languages=#{languages.join(",")}",
                              "--disable-nls",
                              "--without-headers",
+
+                             # link as and ld from cross-compiled binutils
                              "--with-gnu-as",
                              "--with-gnu-ld",
-                             "--with-ld=#{binutils.bin/"x86_64-pc-elf-ld"}",
-                             "--with-as=#{binutils.bin/"x86_64-pc-elf-as"}",
+                             "--with-ld=#{binutils.opt_bin/"x86_64-pc-elf-ld"}",
+                             "--with-as=#{binutils.opt_bin/"x86_64-pc-elf-as"}",
+
                              "--with-gmp=#{Formula["gmp"].opt_prefix}",
                              "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
                              "--with-mpc=#{Formula["libmpc"].opt_prefix}"
