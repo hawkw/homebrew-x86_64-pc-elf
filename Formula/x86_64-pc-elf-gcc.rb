@@ -60,10 +60,9 @@ class X8664PcElfGcc < Formula
 
   test do
     (testpath/"hello.c").write <<-EOS.undent
-      #include <stdio.h>
-      main()
+      int main()
       {
-          printf("Hello, world!");
+          return 0;
       }
       EOS
     system "#{bin}/x86_64-pc-elf-gcc", (testpath/"hello.c")
