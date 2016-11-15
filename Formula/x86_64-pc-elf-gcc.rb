@@ -57,4 +57,15 @@ class X8664PcElfGcc < Formula
     info.rmtree
     man7.rmtree
   end
+
+  test do
+    (testpath/"hello.c").write <<-EOS.undent
+      #include <stdio.h>
+      main()
+      {
+          printf("Hello, world!");
+      }
+      EOS
+    system "#{bin}/x86_64-pc-elf-gcc", (testpath/"hello.c")
+  end
 end
