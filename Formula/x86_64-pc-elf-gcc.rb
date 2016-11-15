@@ -24,13 +24,16 @@ class X8664PcElfGcc < Formula
     languages << "c++" if build.with? "cxx"
     binutils = Formula["x86_64-pc-elf-binutils"]
 
-    # ENV['PATH'] += ":#{binutils.prefix/"bin"}"
+    ENV['PATH'] += ":#{binutils.prefix/"bin"}"
 
     mkdir "build" do
       system "../configure", "--target=x86_64-pc-elf",
                              "--prefix=#{prefix}",
                              "--enable-languages=#{languages.join(",")}",
+
                              "--disable-nls",
+                             "--disable-werror",
+
                              "--without-headers",
 
                              # link as and ld from cross-compiled binutils
@@ -46,6 +49,7 @@ class X8664PcElfGcc < Formula
       ENV.deparallelize
       system "make", "all-gcc"
       system "make", "all-target-libgcc"
+      FileUtils.ln_sf binutils.prefix/"x86_64-pc-elf", prefix/"x86_64-pc-elf"
       system "make", "install-gcc"
       system "make", "install-target-libgcc"
     end
