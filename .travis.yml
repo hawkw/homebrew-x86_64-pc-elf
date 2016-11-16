@@ -1,0 +1,9 @@
+language: objective-c
+# should give access to mac osx 10.12
+osx_image: xcode8.1
+
+script:
+  - brew update
+  - brew tap hawkw/x86_64-pc-elf
+  - travis_wait 60 brew install x86_64-pc-elf-binutils
+  - travis_wait 60 brew install x86_64-pc-elf-gcc
